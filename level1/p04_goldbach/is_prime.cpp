@@ -1,5 +1,5 @@
 //
-// Created by liuhaolu on 2023/12/12.
+// Created by liuhaolu on 2023/9/12.
 //
 #include"is_prime.h"
 bool is_prime(int n)
