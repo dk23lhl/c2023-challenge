@@ -6,101 +6,80 @@ using namespace std;
 
 char a[10][11];
 
-int main()
-{
-    cout<<"ÇëÑ¡Ôñ¹Ø¿¨1¡¢2"<<endl;
+int main() {
+    cout << "è¯·é€‰æ‹©å…³å¡1ã€2" << endl;
     int n;
-    cin>>n;
+    cin >> n;
     fstream infile;
-    if(n==1)
-        infile.open("C:\\Users\\liuhaolu\\CLionProjects\\c2023-challenge\\level1\\p08_push_boxes\\map1.txt",ios::in);
-    if(n==2)
-        infile.open("C:\\Users\\liuhaolu\\CLionProjects\\c2023-challenge\\level1\\p08_push_boxes\\map2.txt",ios::in);
-    if (!infile.is_open())
-    {
-        cout << "ÎÄ¼þ´ò¿ªÊ§°Ü¡£" << endl;
+    if (n == 1)
+        infile.open("C:\\Users\\liuhaolu\\CLionProjects\\c2023-challenge\\level1\\p08_push_boxes\\map1.txt", ios::in);
+    if (n == 2)
+        infile.open("C:\\Users\\liuhaolu\\CLionProjects\\c2023-challenge\\level1\\p08_push_boxes\\map2.txt", ios::in);
+    if (!infile.is_open()) {
+        cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥ã€‚" << endl;
         system("pause");
         return 0;
     }
     char c;
-    for(int i=0;i<10;i++)
-    {
-        for(int j=0;j<11;j++)
-        {
-            c=infile.get();
-            a[i][j]=c;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 11; j++) {
+            c = infile.get();
+            a[i][j] = c;
         }
     }
     infile.close();
-    for(int i=0;i<10;i++)
-    {
-        for(int j=0;j<11;j++)
-        {
-            cout<<a[i][j];
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 11; j++) {
+            cout << a[i][j];
         }
     }
-    int x = 1, y = 1,s=0;
-    while (1)
-    {
+    int x = 1, y = 1, s = 0;
+    while (1) {
         s++;
         char d;
         d = getch();
-        if (d == 'w' && a[x - 1][y] != '*')
-        {
-            if(a[x-1][y]=='?')
-            {
-                if(a[x-2][y]=='*') continue;
-                a[x-2][y]='?';
+        if (d == 'w' && a[x - 1][y] != '*') {
+            if (a[x - 1][y] == '?') {
+                if (a[x - 2][y] == '*') continue;
+                a[x - 2][y] = '?';
             }
             a[x][y] = ' ';
             a[x - 1][y] = 'o';
             x--;
-        }
-        else if (d == 's' && a[x + 1][y] != '*')
-        {
-            if(a[x+1][y]=='?')
-            {
-                if(a[x+2][y]=='*') continue;
-                a[x+2][y]='?';
+        } else if (d == 's' && a[x + 1][y] != '*') {
+            if (a[x + 1][y] == '?') {
+                if (a[x + 2][y] == '*') continue;
+                a[x + 2][y] = '?';
             }
             a[x][y] = ' ';
             a[x + 1][y] = 'o';
             x++;
-        }
-        else if (d == 'a' && a[x][y - 1] != '*')
-        {
-            if(a[x][y-1]=='?')
-            {
-                if(a[x][y-2]=='*') continue;
-                a[x][y-2]='?';
+        } else if (d == 'a' && a[x][y - 1] != '*') {
+            if (a[x][y - 1] == '?') {
+                if (a[x][y - 2] == '*') continue;
+                a[x][y - 2] = '?';
             }
             a[x][y] = ' ';
             a[x][y - 1] = 'o';
             y--;
-        }
-        else if (d == 'd' && a[x][y + 1] != '*')
-        {
-            if(a[x][y+1]=='?')
-            {
-                if(a[x][y+2]=='*') continue;
-                a[x][y+2]='?';
+        } else if (d == 'd' && a[x][y + 1] != '*') {
+            if (a[x][y + 1] == '?') {
+                if (a[x][y + 2] == '*') continue;
+                a[x][y + 2] = '?';
             }
             a[x][y] = ' ';
             a[x][y + 1] = 'o';
             y++;
         }
         system("cls");
-        for (int i = 0; i < 10; i++)
-        {
-            for(int j=0;j<11;j++)
-            {
-                cout<<a[i][j];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 11; j++) {
+                cout << a[i][j];
             }
-            if (x == 2 && y == 8)
-            {
+            if (x == 2 && y == 8) {
                 system("cls");
-                cout << "³É¹¦µ½´ï£¡"<<endl;
-                cout<<"·ÖÊýÎª"<<100-s<<endl;
+                cout << "æˆåŠŸåˆ°è¾¾ï¼" << endl;
+                cout << "åˆ†æ•°ä¸º" << 100 - s << endl;
                 system("pause");
                 return 0;
             }
